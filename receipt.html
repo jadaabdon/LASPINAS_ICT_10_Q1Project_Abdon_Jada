@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt Generator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fffbcb;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #dfb0cbce;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .card {
+            width: 550px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            
+        }
+
+        .card-header {
+            background: linear-gradient(90deg,#cc96b6a9, #e495c3a7);
+            color: rgb(243, 239, 215);
+            text-align: center;
+            padding: 25px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #fffbcb;
+        }
+
+        .card-body {
+            padding: 20px;
+            
+        }
+
+        .menu-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            float: right;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .btn-order {
+            width: 100%;
+            background: linear-gradient(90deg, #e495c352, #e495c33d);
+            color: rgb(213, 158, 197);
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+        }
+
+        #show {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold" href="index.html">
+           
+        </a>
+
+        <div>
+            <a href="index.html">SKU Generator</a>
+            <a href="receipt.html">Receipt Generator</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="card">
+
+    <div class="card-header">
+        <h1>🧁</h1>
+        <h2>reciept ୭ ᵎᵎ menu </h2>
+        <p>order summary</p>
+    </div>
+
+
+    <div class="card-body">
+
+        <h4>⤷ 𝑀𝑒𝓃𝓊 🍮🥄 ˚₊‧ </h4>
+
+
+        <div class="menu-item">
+            <input type="checkbox" id="item1" value="99">
+            <label for="item1">Caramel Macchiato</label>
+            <span class="price">₱99</span>
+        </div>
+
+
+        <div class="menu-item">
+            <input type="checkbox" id="item2" value="129">
+            <label for="item2">Pesto Pasta</label>
+            <span class="price">₱129</span>
+        </div>
+
+
+        <div class="menu-item">
+            <input type="checkbox" id="item3" value="189">
+            <label for="item3">Dubai Chewy Cookie</label>
+            <span class="price">₱189</span>
+        </div>
+
+
+        <div class="menu-item">
+            <input type="checkbox" id="item4" value="159">
+            <label for="item4">Pain Au Chocolat</label>
+            <span class="price">₱159</span>
+        </div>
+
+
+        <div class="menu-item">
+            <input type="checkbox" id="item5" value="129">
+            <label for="item5">Iced Tea</label>
+            <span class="price">₱129</span>
+        </div>
+
+
+        <button onclick="create_order()" class="btn btn-order">
+            ᴄʀᴇᴀᴛᴇ ᴏʀᴅᴇʀ
+        </button>
+
+
+        <hr>
+
+
+        <div id="show">
+            ʏᴏᴜʀ ᴏʀᴅᴇʀ ꜱᴜᴍᴍᴀʀʏ ᴡɪʟʟ ᴀᴘᴘᴇᴀʀ ʜᴇʀᴇ. ೀ
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+function create_order() {
+
+   
+    prod1 = document.getElementById("item1");
+    prod2 = document.getElementById("item2");
+    prod3 = document.getElementById("item3");
+    prod4 = document.getElementById("item4");
+    prod5 = document.getElementById("item5");
+
+
+   
+    subtotal =
+        (parseFloat(prod1.value) * prod1.checked) +
+        (parseFloat(prod2.value) * prod2.checked) +
+        (parseFloat(prod3.value) * prod3.checked) +
+        (parseFloat(prod4.value) * prod4.checked) +
+        (parseFloat(prod5.value) * prod5.checked);
+
+
+ 
+    tax_rate = 0.12;
+
+    tax = subtotal * tax_rate;
+
+    total = subtotal + tax;
+
+
+    
+    receipt = `
+        <h3> ── ⋆⋅ʀᴇᴄᴇɪᴘᴛ ⋅⋆ ──</h3>
+
+        <p>Subtotal: ₱${subtotal.toFixed(2)}</p>
+
+        <p>Tax: ₱${tax.toFixed(2)}</p>
+
+        <h4>Total: ₱${total.toFixed(2)}</h4>
+    `;
+
+
+    document.getElementById("show").innerHTML = receipt;
+}
+
+</script>
+
+</body>
+</html>
